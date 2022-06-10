@@ -168,7 +168,7 @@ class _auth_screenState extends State<auth_screen>
                               email: _emailControllerSignIn.text,
                               password: _passwordControllerSignIn.text,
                             );
-                          Navigator.of(context).pushNamed(AppRoutes.screenlayout);
+                          Navigator.of(context).pushNamed(AppRoutes.HomeScreen);
                            // print(output);
                         //  Utils.showSnackBar(context: context, content: output.toString());
                           },

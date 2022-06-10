@@ -22,8 +22,11 @@ class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
               end: Alignment.centerRight)),
     );
   }
-
+  
   @override
   // TODO: implement preferredSize
   Size get preferredSize => throw UnimplementedError();
-}
+
+  //@override
+  // TODO: implement preferredSi
+  }

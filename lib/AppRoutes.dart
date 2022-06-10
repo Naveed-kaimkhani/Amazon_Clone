@@ -15,8 +15,8 @@ class AppRoutes {
     switch (settings.name) {
       case authScreen:
         return _buildRoute(const auth_screen(), settings);      
-      case screenlayout:
-        return _buildRoute(const screen_layout(), settings);
+      // case screenlayout:
+      //   return _buildRoute(const screen_layout(), settings);
          case HomeScreen:
         return _buildRoute(const Home_Screen(), settings);
       default:

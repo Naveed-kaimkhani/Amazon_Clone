@@ -20,8 +20,8 @@ class authentication_methods {
           password: password,
         );
         output = "SignUp Successfully";
-       await Firestore_method.uploadDataToFirestore(name: namee, phone: phonee);
-
+        await Firestore_method.uploadDataToFirestore(
+            name: namee, phone: phonee);
       } on FirebaseAuthException catch (e) {
         output = e.message.toString();
       }
@@ -35,15 +35,12 @@ class authentication_methods {
   }
 
   //SignIn method
-   static Future<String> SignInUsers(
-      {
-      required String email,
-      required String password}) async {
-    
+  static Future<String> SignInUsers(
+      {required String email, required String password}) async {
     email.trim();
-      password.trim();
+    password.trim();
     String output;
-    if ( email != "" && password != "") {
+    if (email != "" && password != "") {
       try {
         final authResult =
             await FirebaseAuth.instance.signInWithEmailAndPassword(

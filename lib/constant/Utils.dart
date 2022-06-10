@@ -2,11 +2,12 @@ import 'package:ecommerce_app/constant/globalVariables.dart';
 import 'package:flutter/material.dart';
 
 class Utils {
-static  Size getScreenSize() {
+  static Size getScreenSize() {
     return MediaQueryData.fromWindow(WidgetsBinding.instance!.window).size;
   }
 
-  static showSnackBar({required BuildContext context, required String content}) {
+  static showSnackBar(
+      {required BuildContext context, required String content}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: globalVariables.selectedNavBarColor,

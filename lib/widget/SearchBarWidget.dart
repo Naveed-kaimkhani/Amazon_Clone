@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/AppRoutes.dart';
 import 'package:ecommerce_app/constant/Utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +29,7 @@ class SearchBarWidget extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     Size screenSize = Utils.getScreenSize();
     return Container(
-      height: 20.h,
+      height: 80.h,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: globalVariables.backgroundGradient,
@@ -60,13 +61,12 @@ class SearchBarWidget extends StatelessWidget with PreferredSizeWidget {
                 ],
               ),
               child: TextField(
-                onSubmitted: (String query) {
-                 
-                },
+                onSubmitted: (String query) {},
                 readOnly: isReadOnly,
                 onTap: () {
                   if (isReadOnly) {
-                  
+
+                    Navigator.of(context).pushNamed(AppRoutes.SearchScreen);
                   }
                 },
                 decoration: InputDecoration(
@@ -81,8 +81,12 @@ class SearchBarWidget extends StatelessWidget with PreferredSizeWidget {
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.mic_none_outlined),
-          )
+            icon: const Icon(
+              Icons.mic_none_outlined,
+              size: 30,
+              color: Colors.white,
+            ),
+          ),
         ],
       ),
     );

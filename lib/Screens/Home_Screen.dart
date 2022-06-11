@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:ecommerce_app/AppRoutes.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
+import 'package:ecommerce_app/widget/Category_list.dart';
 import 'package:ecommerce_app/widget/SearchBarWidget.dart';
 import "package:flutter/material.dart";
 
@@ -38,8 +39,14 @@ class _Home_ScreenState extends State<Home_Screen> {
     return SafeArea(
       child: Scaffold(
           appBar:SearchBarWidget(isReadOnly: true, hasBackButton:false),
-          body: const Center(
-            child: Text("Home Screen"),
+          body:  Center(
+            child:SingleChildScrollView(
+             child: Column(
+              children: const [
+                Category_list(),
+              ],
+             ),
+            ),
           ),
           bottomNavigationBar: CurvedNavigationBar(
               //// index: index,

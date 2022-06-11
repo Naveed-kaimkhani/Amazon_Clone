@@ -6,8 +6,10 @@ class Search_Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: SearchBarWidget(isReadOnly: false, hasBackButton:true),
+    return SafeArea(
+      child: Scaffold(
+        appBar: SearchBarWidget(isReadOnly: false, hasBackButton:true),
+      ),
     );
   }
 }

@@ -43,7 +43,7 @@ class SearchBarWidget extends StatelessWidget with PreferredSizeWidget {
           hasBackButton
               ? IconButton(
                   onPressed: () {
-                    //Navigator.pop(context);
+                    Navigator.pop(context);
                   },
                   icon: const Icon(Icons.arrow_back))
               : Container(),

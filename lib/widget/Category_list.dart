@@ -8,22 +8,32 @@ class Category_list extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70.h,
+      height: 100.h,
       width: double.infinity,
       color: Colors.white,
       child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 5.h,horizontal: 5.w),
+          padding: EdgeInsets.symmetric(vertical: 17.h, horizontal: 5.w),
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: categoriesList.length,
               itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(categoryLogos[index]),
+                return GestureDetector(
+                  onTap: () {},
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 10.w),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: NetworkImage(categoryLogos[index]),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 6.h),
+                          child: Text(categoriesList[index]),
+                        ),
+                      ],
                     ),
-                    Text(categoriesList[index]),
-                  ],
+                  ),
                 );
               })),
     );

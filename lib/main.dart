@@ -1,4 +1,5 @@
 
+import 'package:ecommerce_app/Screens/Home_Screen.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
 import 'package:ecommerce_app/screens/auth_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -49,24 +50,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: globalVariables.backgroundColor,
         ),
          // primarySwatch: Colors.blue,
-        home: StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(),
-        builder:(context,AsyncSnapshot<User?> user){
-          if (user.connectionState==ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(
-                color: globalVariables.kPrimaryColor,
-              ),
-            );
-          }
-          else if(user.hasData){ 
-          //  authIntance._animationController.reverse();
-         // Firebase
-             return const auth_screen();
-          }
-          else{
-            return const auth_screen();
-          }
-        } ) ,
+        home: Home_Screen(),
               onGenerateRoute: AppRoutes.onGenerateRoute
     
         );

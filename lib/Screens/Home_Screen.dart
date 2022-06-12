@@ -1,9 +1,12 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:ecommerce_app/AppRoutes.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
+import 'package:ecommerce_app/widget/BannerWidget.dart';
 import 'package:ecommerce_app/widget/Category_list.dart';
+import 'package:ecommerce_app/widget/Product_list.dart';
 import 'package:ecommerce_app/widget/SearchBarWidget.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Home_Screen extends StatefulWidget {
   const Home_Screen({Key? key}) : super(key: key);
@@ -38,14 +41,17 @@ class _Home_ScreenState extends State<Home_Screen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar:SearchBarWidget(isReadOnly: true, hasBackButton:false),
-          body:  Center(
-            child:SingleChildScrollView(
-             child: Column(
-              children: const [
+          appBar: SearchBarWidget(isReadOnly: true, hasBackButton: false),
+          body: SingleChildScrollView(
+            child: Column(
+              children:const [
                 Category_list(),
+                BannerWidget(),
+                // SizedBox(
+                //   height: 3.h,
+                // ),
+                Product_list(title: "Upto 70% Off", children: [])
               ],
-             ),
             ),
           ),
           bottomNavigationBar: CurvedNavigationBar(

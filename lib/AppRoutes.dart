@@ -1,8 +1,9 @@
 import 'package:ecommerce_app/Screens/Home_Screen.dart';
 import 'package:ecommerce_app/Screens/Search_Screen.dart';
-import 'package:ecommerce_app/layouts/screen_layout.dart';
 import 'package:ecommerce_app/screens/auth_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'Screens/Acount_Screen.dart';
 
 
 
@@ -11,6 +12,8 @@ class AppRoutes {
    static const String screenlayout = '/screen_layout';
    static const String HomeScreen= '/Home_Screen';
    static const String SearchScreen= '/Search_Screen';
+   static const String AccountScreen= '/Account_Screen';
+
 
 
 
@@ -24,6 +27,8 @@ class AppRoutes {
         return _buildRoute(const Home_Screen(), settings);
           case SearchScreen:
         return _buildRoute(const Search_Screen(), settings);
+          case AccountScreen:
+        return _buildRoute(const Account_Screen(), settings);
       default:
         return _buildRoute(const Scaffold(), settings);
     }

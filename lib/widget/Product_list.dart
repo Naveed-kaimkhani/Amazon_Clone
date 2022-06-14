@@ -11,8 +11,8 @@ class Product_list extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = Utils.getScreenSize();
     return Container(
-      margin: EdgeInsets.all(8),
-      color: Colors.black,
+      margin:const EdgeInsets.all(8),
+      color: Colors.white,
       height: screenSize.height / 4,
       width: screenSize.width,
       // color: Colors.white,
@@ -51,7 +51,7 @@ class Product_list extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   children: children!,
                 )),
-          )
+          ),
         ],
       ),
     );

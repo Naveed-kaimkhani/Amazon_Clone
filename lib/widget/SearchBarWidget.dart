@@ -28,7 +28,8 @@ class SearchBarWidget extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     Size screenSize = Utils.getScreenSize();
-    return Container(
+    return 
+    Container(
       height: 80.h,
       decoration: const BoxDecoration(
         gradient: LinearGradient(

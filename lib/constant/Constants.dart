@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+import '../widget/SimpleProductWidget.dart';
+
 const List<String> categoryLogos = [
   "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
   "https://m.media-amazon.com/images/I/116KbsvwCRL._SX90_SY90_.png",
@@ -27,3 +31,19 @@ const List<String> categoriesList = [
   "Books, Toys",
   "Essential"
 ];
+
+  List<Widget> Test = [
+    SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+    ),
+    SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+    ),
+    SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+    ),
+    SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+    ),
+  ];
+ 

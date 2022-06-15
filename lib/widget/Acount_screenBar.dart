@@ -12,7 +12,7 @@ class Account_screenBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 80.h,
+        height: 90.h,
         width: double.infinity,
         decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -26,7 +26,9 @@ class Account_screenBar extends StatelessWidget with PreferredSizeWidget {
             "Hello, Naveed",
             style: TextStyle(
               color: Colors.white,
-            ),
+              fontSize: 20,
+            )
+            ,
           ),
           Row(
             children: [

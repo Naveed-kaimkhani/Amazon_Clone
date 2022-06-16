@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Screens/Cart_Screen.dart';
 import 'package:ecommerce_app/Screens/Home_Screen.dart';
 import 'package:ecommerce_app/Screens/Search_Screen.dart';
 import 'package:ecommerce_app/screens/auth_screen.dart';
@@ -13,6 +14,7 @@ class AppRoutes {
    static const String HomeScreen= '/Home_Screen';
    static const String SearchScreen= '/Search_Screen';
    static const String AccountScreen= '/Account_Screen';
+   static const String CartScreen= '/Cart_Screen';
 
 
 
@@ -29,6 +31,8 @@ class AppRoutes {
         return _buildRoute(const Search_Screen(), settings);
           case AccountScreen:
         return _buildRoute(const Account_Screen(), settings);
+        case CartScreen:
+        return _buildRoute(const Cart_Screen(), settings);
       default:
         return _buildRoute(const Scaffold(), settings);
     }

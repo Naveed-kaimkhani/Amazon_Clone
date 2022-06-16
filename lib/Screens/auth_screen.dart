@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/AppRoutes.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
 import 'package:ecommerce_app/constant/inputfields.dart';
-import 'package:ecommerce_app/resources/Firestore_methods.dart';
 import 'package:ecommerce_app/resources/authentication_methods.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

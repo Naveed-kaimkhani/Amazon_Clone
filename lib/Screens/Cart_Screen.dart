@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/constant/globalVariables.dart';
 import 'package:ecommerce_app/widget/CheckoutCard.dart';
+import 'package:ecommerce_app/widget/CustomSquareButton.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -103,17 +104,46 @@ class Cart_Item_Card extends StatelessWidget {
             ),
             maxLines: 2,
           ),
-          subtitle: Row(
-            children: const [
-              Text("price",
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 15,
-                  )),
-              Text(
-                "  x2",
-                style: TextStyle(
-                  color: Colors.grey,
+          subtitle: Column(
+            children: [
+              Row(
+                children: const [
+                  Text("price",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 15,
+                      )),
+                  Text(
+                    "  x2",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                  // SizedBox(
+                  //   height: 20,
+                  // )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Row(
+                  children: [
+                    CustomSquareButton(
+                        child: Icon(Icons.remove),
+                        onPressed: () {},
+                        color: Colors.grey[200]!,
+                        dimension: 23),
+                    CustomSquareButton(
+                        child: Text("0"),
+                        onPressed: () {},
+                        color: Colors.grey[200]!,
+                        dimension: 23),
+                    CustomSquareButton(
+                        child: Icon(Icons.add),
+                        onPressed: () {},
+                        color: Colors.grey[200]!,
+                        dimension: 23),
+                  ],
                 ),
               )
             ],

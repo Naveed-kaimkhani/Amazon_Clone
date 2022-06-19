@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class Product{
 
@@ -8,7 +7,7 @@ class Product{
   final double price;
   final double discount;
   final double rating;
-  final int SellerName;
+  final String SellerName;
   final String uid;
   final String Sellerid;
   final String NoOfRatings;

@@ -15,6 +15,7 @@ class AppRoutes {
    static const String SearchScreen= '/Search_Screen';
    static const String AccountScreen= '/Account_Screen';
    static const String CartScreen= '/Cart_Screen';
+   static const String Search= '/Search_Screen';
 
 
 
@@ -33,6 +34,8 @@ class AppRoutes {
         return _buildRoute(const Account_Screen(), settings);
         case CartScreen:
         return _buildRoute(const Cart_Screen(), settings);
+          case Search:
+        return _buildRoute(const Search_Screen(), settings);
       default:
         return _buildRoute(const Scaffold(), settings);
     }

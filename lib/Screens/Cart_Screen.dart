@@ -65,8 +65,8 @@ class _Cart_ScreenState extends State<Cart_Screen> {
                     )),
                 child: Cart_Item_Card(
                   product: Product(
-                      ProductName: "Porn",
-                      description: "pussy eating",
+                      ProductName: "shoes",
+                      description: "Nikee",
                       url:
                           "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
                       price: 10.0,

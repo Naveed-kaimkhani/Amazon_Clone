@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../Models/Product.dart';
 import '../constant/Utils.dart';
+import 'RatingStateWidget.dart';
 
 class ResultsWidget extends StatelessWidget {
   final Product product;
@@ -42,7 +43,8 @@ class ResultsWidget extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            CostWidget(color: Colors.grey, cost: 20.00),
+         const CostWidget(color: Colors.grey, cost: 20.00),
+           const RatingStatWidget(rating: 4),
           ]
         )
         )

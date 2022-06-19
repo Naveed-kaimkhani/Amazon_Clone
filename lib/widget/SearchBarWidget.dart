@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/AppRoutes.dart';
 import 'package:ecommerce_app/constant/Utils.dart';
+import 'package:ecommerce_app/widget/ResultScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
@@ -62,7 +63,9 @@ class SearchBarWidget extends StatelessWidget with PreferredSizeWidget {
                 ],
               ),
               child: TextField(
-                onSubmitted: (String query) {},
+                onSubmitted: (String query) {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ResultScreen(query: query)));
+                },
                 readOnly: isReadOnly,
                 onTap: () {
                   if (isReadOnly) {

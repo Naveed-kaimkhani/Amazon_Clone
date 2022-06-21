@@ -1,6 +1,9 @@
+import 'package:ecommerce_app/Models/Product.dart';
+import 'package:ecommerce_app/Screens/ProductScreen.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
 import 'package:ecommerce_app/layouts/screen_layout.dart';
 import 'package:ecommerce_app/screens/auth_screen.dart';
+import 'package:ecommerce_app/widget/ResultScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +54,23 @@ class MyApp extends StatelessWidget {
                 scaffoldBackgroundColor: globalVariables.backgroundColor,
               ),
               // primarySwatch: Colors.blue,
-              home: const screen_layout(),
+              home: ProductScreen(
+                product: Product(
+                  ProductName: "shoes",
+                  description:
+                      "A product description is the marketing copy that explains what a product is and why it’s worth purchasing. The purpose of a product description is to supply customers with important information about the features and benefits of the product so they’re compelled to buy.",
+                  url:
+                      "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+                  price: 1200,
+                  discount: 30.0,
+                  rating: 1.0,
+                  SellerName: "meee",
+                  uid: "Me hunn",
+                  Sellerid: "20sw",
+                  NoOfRatings: "kuch nhh",
+                  color: Colors.blue,
+                ),
+              ),
               onGenerateRoute: AppRoutes.onGenerateRoute);
         });
   }
@@ -82,7 +101,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             GestureDetector(
               child: const Icon(Icons.search),
-              onTap: () => Navigator.of(context).pushNamed(AppRoutes.Search),
+              onTap: () =>
+                  Navigator.of(context).pushNamed(AppRoutes.HomeScreen),
             ),
           ],
         ));

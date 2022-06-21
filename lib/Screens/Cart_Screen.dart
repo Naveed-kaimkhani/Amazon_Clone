@@ -69,13 +69,15 @@ class _Cart_ScreenState extends State<Cart_Screen> {
                       description: "Nikee",
                       url:
                           "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
-                      price: 10.0,
+                      price: 10,
                       discount: 30.0,
                       rating: 1.0,
                       SellerName: "meee",
                       uid: "Me hunn",
                       Sellerid: "20sw",
-                      NoOfRatings: "kuch nhh"),
+                      NoOfRatings: "kuch nhh",
+                      color: Colors.white,
+                      ),
                 )),
           );
         }));

@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/constant/globalVariables.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

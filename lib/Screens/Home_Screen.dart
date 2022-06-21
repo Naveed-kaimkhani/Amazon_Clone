@@ -4,7 +4,6 @@ import 'package:ecommerce_app/widget/BannerWidget.dart';
 import 'package:ecommerce_app/widget/Category_list.dart';
 import 'package:ecommerce_app/widget/Product_list.dart';
 import 'package:ecommerce_app/widget/SearchBarWidget.dart';
-import 'package:ecommerce_app/widget/SimpleProductWidget.dart';
 import 'package:ecommerce_app/widget/UserDetailsBar.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';

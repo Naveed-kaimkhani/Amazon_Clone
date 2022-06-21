@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
 
 import '../Models/Product.dart';
+import 'Add_removeItemButton.dart';
 import 'CustomSquareButton.dart';
 
 class Cart_Item_Card extends StatelessWidget {
@@ -66,25 +67,8 @@ class Cart_Item_Card extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
-                child: Row(
-                  children: [
-                    CustomSquareButton(
-                        child: Icon(Icons.remove),
-                        onPressed: () {},
-                        color: Colors.grey[200]!,
-                        dimension: 23),
-                    CustomSquareButton(
-                        child: Text("0"),
-                        onPressed: () {},
-                        color: Colors.grey[200]!,
-                        dimension: 23),
-                    CustomSquareButton(
-                        child: Icon(Icons.add),
-                        onPressed: () {},
-                        color: Colors.grey[200]!,
-                        dimension: 23),
-                  ],
-                ),
+                child:  Add_removeItemButton(
+                                icon: Icons.remove, press: () {}),
               )
             ],
           ),

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 
+import 'SliderPay_Button.dart';
+
 class CheckoutCard extends StatelessWidget {
   const CheckoutCard({
     Key? key,
@@ -92,25 +94,7 @@ class CheckoutCard extends StatelessWidget {
                   child: Container(
                     height: 50.h,
                     width: 150.w,
-                    child: SlideAction(
-                      borderRadius: 12,
-                      innerColor: globalVariables.secondaryColor,
-                      outerColor: Colors.blue,
-                      sliderButtonIcon: const Icon(
-                        Icons.arrow_forward_ios,
-                        size: 10,
-                      ),
-                      text: "Slide to pay",
-                      textStyle: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        //fontWeight: FontWeight.bold,
-                      ),
-                      sliderRotate: false,
-                      onSubmit: () {
-                        //  print("slide to checkout");
-                      },
-                    ),
+                    child: SliderPay_Button(),
                   )),
             ]),
           ],

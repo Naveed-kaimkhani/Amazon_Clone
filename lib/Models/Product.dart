@@ -8,7 +8,7 @@ class Product{
   final String url;
   final int price;
   final double discount;
-  final double rating;
+  final int rating;
   final String SellerName;
   final String uid;
   final String Sellerid;

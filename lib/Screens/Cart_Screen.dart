@@ -71,7 +71,7 @@ class _Cart_ScreenState extends State<Cart_Screen> {
                           "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
                       price: 10,
                       discount: 30.0,
-                      rating: 1.0,
+                      rating: 1,
                       SellerName: "meee",
                       uid: "Me hunn",
                       Sellerid: "20sw",

@@ -1,13 +1,17 @@
+import 'package:ecommerce_app/Models/ReviewModel.dart';
 import 'package:ecommerce_app/widget/Add_removeItemButton.dart';
+import 'package:ecommerce_app/widget/ReviewWidget.dart';
 import 'package:ecommerce_app/widget/SliderPay_Button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rating_dialog/rating_dialog.dart';
 
 import '../Models/Product.dart';
 import '../constant/Utils.dart';
 
 class ProductScreen extends StatelessWidget {
   final Product product;
+
   const ProductScreen({Key? key, required this.product}) : super(key: key);
 
   @override
@@ -18,12 +22,15 @@ class ProductScreen extends StatelessWidget {
         backgroundColor: Colors.blue,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: product.color,
+          backgroundColor: Colors.blue,
           leading: Container(
             margin: const EdgeInsets.all(15.0),
-            child: SvgPicture.asset(
-              'assets/images/back.svg',
-              color: Colors.white,
+            child: GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: SvgPicture.asset(
+                'assets/images/back.svg',
+                color: Colors.white,
+              ),
             ),
           ),
           actions: [
@@ -60,13 +67,17 @@ class ProductScreen extends StatelessWidget {
                           padding: EdgeInsets.only(
                               top: (screenSize.width * 0.2),
                               left: (screenSize.width * 0.03)),
-                          child: Text(
-                            product.description,
-                            // maxLines: 6,
-                            //overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 17,
-                              //fontWeight: FontWeight.w600,
+                          child: SizedBox(
+                            height: screenSize.height / 7,
+                            width: screenSize.width,
+                            child: Text(
+                              product.description,
+                              // maxLines: 6,
+                              //overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 17,
+                                //fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),
@@ -96,25 +107,44 @@ class ProductScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        ElevatedButton(
-                            onPressed: () {
-                              // showBottomSheet(context: context, builder: builder)
-                              showModalBottomSheet(
-                                  backgroundColor: Colors.white,
-                                  //  barrierColor: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30)),
-                                  ),
-                                  context: context,
-                                  builder: (context) =>Expanded(
-                                    child: ListView.builder(
-                                      itemCount: 5,
-                                      itemBuilder: (context,index)=>Text("haan"),
-                                    ),
-                                  )
-                                      );
-                            },
-                            child: Text("Reviews")),
+                        Row(
+                          children: [
+                            ElevatedButton(
+                                onPressed: () {
+                                  // showBottomSheet(context: context, builder: builder)
+                                  showModalBottomSheet(
+                                      backgroundColor: Colors.white,
+                                      //  barrierColor: Colors.white,
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(30),
+                                            topRight: Radius.circular(30)),
+                                      ),
+                                      context: context,
+                                      builder: (context) => ListView.builder(
+                                            itemCount: 5,
+                                            itemBuilder: (context, index) =>
+                                                ReviewWidget(
+                                                    review: ReviewModel(
+                                                        "Naveed",
+                                                        "Such an amazing product dfasdf fsdfsfsd fsdfsfs fdffafdsfasfas",
+                                                        3)),
+                                          ));
+                                },
+                                child: const Text("Reviews")),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            ElevatedButton(
+                                onPressed: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          RatingDialogueWidget());
+                                },
+                                child: Text("Drop your review"))
+                          ],
+                        ),
                         const SizedBox(height: 6),
                         Padding(
                           padding: const EdgeInsets.all(12.0),
@@ -134,7 +164,7 @@ class ProductScreen extends StatelessWidget {
                                   onPressed: () {},
                                   icon: SvgPicture.asset(
                                     "assets/images/add_to_cart.svg",
-                                    color: product.color,
+                                    color: Colors.black,
                                   ),
                                 ),
                               ),
@@ -197,6 +227,38 @@ class ProductScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class RatingDialogueWidget extends StatelessWidget {
+  const RatingDialogueWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RatingDialog(
+      title: const Text(
+        'Drop a review for this product',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 20,
+          //    fontWeight: FontWeight.bold,
+        ),
+      ),
+      // encourage your user to leave a high rating?
+      message: const Text(
+        'Tap a star to set your rating.',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 15),
+      ),
+      // your app's logo?
+      //image: const FlutterLogo(size: 100),
+      submitButtonText: 'Submit',
+      commentHint: 'Type here',
+      onCancelled: () => print('cancelled'),
+      onSubmitted: (RatingDialogResponse res) {},
     );
   }
 }

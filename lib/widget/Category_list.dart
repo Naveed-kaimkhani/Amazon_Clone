@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/constant/Constants.dart';
+import 'package:ecommerce_app/widget/ResultScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,7 +19,9 @@ class Category_list extends StatelessWidget {
               itemCount: categoriesList.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>ResultScreen(query: categoriesList[index])));
+                  },
                   child: Padding(
                     padding: EdgeInsets.only(left: 10.w),
                     child: Column(

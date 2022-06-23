@@ -58,10 +58,10 @@ class ResultScreen extends StatelessWidget {
                   return ResultsWidget(
                     product: Product(
                         ProductName: "Hand Bag",
-                        description: "Nikee",
+                        description: "This is a Shopping Online App that builds only five main things first, it is the home page. and the second one is the store page. and the third one is the account page, and the fourth one is the cart page. and the last one is more pages",
                         url:
                             "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
-                        price: 10,
+                        price: 1000,
                         discount: 30.0,
                         rating: 1,
                         SellerName: "meee",

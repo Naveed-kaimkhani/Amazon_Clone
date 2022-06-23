@@ -6,6 +6,7 @@ import 'package:ecommerce_app/widget/ResultScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'Screens/Acount_Screen.dart';
+import 'Screens/ProductScreen.dart';
 
 
 
@@ -18,6 +19,7 @@ class AppRoutes {
    static const String CartScreen= '/Cart_Screen';
    //static const String Search= '/Search_Screen';
    static const String SearchResultScreen= '/ResultScreen';
+   static const String Produc_Screen= '/ProductScreen';
   
 
 
@@ -36,8 +38,8 @@ class AppRoutes {
         return _buildRoute(const Account_Screen(), settings);
         case CartScreen:
         return _buildRoute(const Cart_Screen(), settings);
-     //     case Search:
-       // return _buildRoute(const Search_Screen(), settings);
+      //   case Product_Screen:
+      //  return _buildRoute(const ProductScreen(), settings);
       default:
         return _buildRoute(const Scaffold(), settings);
     }

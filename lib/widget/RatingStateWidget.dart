@@ -17,11 +17,8 @@ class RatingStatWidget extends StatelessWidget {
           : const Icon(Icons.star_border, color: Colors.orange));
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: children,
-      ),
+    return Row(
+      children: children,
     );
   }
 }

@@ -54,23 +54,24 @@ class MyApp extends StatelessWidget {
                 scaffoldBackgroundColor: globalVariables.backgroundColor,
               ),
               // primarySwatch: Colors.blue,
-              home: ProductScreen(
-                product: Product(
-                  ProductName: "shoes",
-                  description:
-                      "A product description is the marketing copy that explains what a product is and why it’s worth purchasing. The purpose of a product description is to supply customers with important information about the features and benefits of the product so they’re compelled to buy.",
-                  url:
-                      "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
-                  price: 1200,
-                  discount: 30.0,
-                  rating: 1,
-                  SellerName: "meee",
-                  uid: "Me hunn",
-                  Sellerid: "20sw",
-                  NoOfRatings: "kuch nhh",
-                  color: Colors.blue,
-                ),
-              ),
+              // home: ProductScreen(
+              //   product: Product(
+              //     ProductName: "shoes",
+              //     description:
+              //         "A product description is the marketing copy that explains what a product is and why it’s worth purchasing. The purpose of a product description is to supply customers with important information about the features and benefits of the product so they’re compelled to buy.",
+              //     url:
+              //         "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+              //     price: 1200,
+              //     discount: 30.0,
+              //     rating: 1,
+              //     SellerName: "meee",
+              //     uid: "Me hunn",
+              //     Sellerid: "20sw",
+              //     NoOfRatings: "kuch nhh",
+              //     color: Colors.blue,
+              //   ),
+              // ),
+              home: screen_layout(),
               onGenerateRoute: AppRoutes.onGenerateRoute);
         });
   }

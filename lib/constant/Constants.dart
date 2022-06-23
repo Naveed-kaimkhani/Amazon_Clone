@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../Models/Product.dart';
 import '../widget/SimpleProductWidget.dart';
 
 const List<String> categoryLogos = [
@@ -32,18 +33,56 @@ const List<String> categoriesList = [
   "Essential"
 ];
 
-  List<Widget> Test = [
-    SimpleProductWidget(
-      url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+List<Widget> Test = [
+  SimpleProductWidget(
+    url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+    product: Product(
+      ProductName: "shoes",
+      description:
+          "What is a Product Description? A product description is a piece of marketing copy that explains the product. It highlights the features and benefits of the product, prompting the visitor to buy it.",
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+      price: 10,
+      discount: 30.0,
+      rating: 1,
+      SellerName: "meee",
+      uid: "Me hunn",
+      Sellerid: "20sw",
+      NoOfRatings: "kuch nhh",
+      color: Colors.black,
     ),
-    SimpleProductWidget(
-      url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+  ),
+  SimpleProductWidget(
+    url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+    product: Product(
+      ProductName: "shoes",
+      description:
+          "What is a Product Description? A product description is a piece of marketing copy that explains the product. It highlights the features and benefits of the product, prompting the visitor to buy it.",
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+      price: 10,
+      discount: 30.0,
+      rating: 1,
+      SellerName: "meee",
+      uid: "Me hunn",
+      Sellerid: "20sw",
+      NoOfRatings: "kuch nhh",
+      color: Colors.black,
     ),
-    SimpleProductWidget(
-      url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+  ),
+  SimpleProductWidget(
+    url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+    product: Product(
+      ProductName: "shoes",
+      description:
+          "What is a Product Description? A product description is a piece of marketing copy that explains the product. It highlights the features and benefits of the product, prompting the visitor to buy it.",
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+      price: 10,
+      discount: 30.0,
+      rating: 1,
+      SellerName: "meee",
+      uid: "Me hunn",
+      Sellerid: "20sw",
+      NoOfRatings: "kuch nhh",
+      color: Colors.black,
     ),
-    SimpleProductWidget(
-      url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
-    ),
-  ];
- 
+  ),
+];

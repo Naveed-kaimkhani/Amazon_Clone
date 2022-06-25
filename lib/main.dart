@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/Models/Product.dart';
+import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
 import 'package:ecommerce_app/Screens/ProductScreen.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
 import 'package:ecommerce_app/layouts/screen_layout.dart';
@@ -8,6 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import 'AppRoutes.dart';
 
@@ -44,35 +46,40 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         designSize: Size(360, 690),
         builder: (context, child) {
-          return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'E-Shop',
-              theme: ThemeData(
-                colorScheme: const ColorScheme.light(
-                  primary: globalVariables.secondaryColor,
+          return MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (_)=>UserDetailsProvider()),
+            ],
+            child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: 'E-Shop',
+                theme: ThemeData(
+                  colorScheme: const ColorScheme.light(
+                    primary: globalVariables.secondaryColor,
+                  ),
+                  scaffoldBackgroundColor: globalVariables.backgroundColor,
                 ),
-                scaffoldBackgroundColor: globalVariables.backgroundColor,
-              ),
-              // primarySwatch: Colors.blue,
-              // home: ProductScreen(
-              //   product: Product(
-              //     ProductName: "shoes",
-              //     description:
-              //         "A product description is the marketing copy that explains what a product is and why it’s worth purchasing. The purpose of a product description is to supply customers with important information about the features and benefits of the product so they’re compelled to buy.",
-              //     url:
-              //         "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
-              //     price: 1200,
-              //     discount: 30.0,
-              //     rating: 1,
-              //     SellerName: "meee",
-              //     uid: "Me hunn",
-              //     Sellerid: "20sw",
-              //     NoOfRatings: "kuch nhh",
-              //     color: Colors.blue,
-              //   ),
-              // ),
-              home: screen_layout(),
-              onGenerateRoute: AppRoutes.onGenerateRoute);
+                // primarySwatch: Colors.blue,
+                // home: ProductScreen(
+                //   product: Product(
+                //     ProductName: "shoes",
+                //     description:
+                //         "A product description is the marketing copy that explains what a product is and why it’s worth purchasing. The purpose of a product description is to supply customers with important information about the features and benefits of the product so they’re compelled to buy.",
+                //     url:
+                //         "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+                //     price: 1200,
+                //     discount: 30.0,
+                //     rating: 1,
+                //     SellerName: "meee",
+                //     uid: "Me hunn",
+                //     Sellerid: "20sw",
+                //     NoOfRatings: "kuch nhh",
+                //     color: Colors.blue,
+                //   ),
+                // ),
+                home: screen_layout(),
+                onGenerateRoute: AppRoutes.onGenerateRoute),
+          );
         });
   }
 }

@@ -1,5 +1,6 @@
 
 import 'package:ecommerce_app/Models/User_Details.dart';
+import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
 import 'package:ecommerce_app/widget/BannerWidget.dart';
 import 'package:ecommerce_app/widget/Category_list.dart';
 import 'package:ecommerce_app/widget/Product_list.dart';
@@ -7,6 +8,7 @@ import 'package:ecommerce_app/widget/SearchBarWidget.dart';
 import 'package:ecommerce_app/widget/UserDetailsBar.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import '../constant/Constants.dart';
 
@@ -37,6 +39,7 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   @override
   Widget build(BuildContext context) {
+    User_Details? userdetails=Provider.of<UserDetailsProvider>(context).userDetails;
     return SafeArea(
       child: Scaffold(
           appBar: SearchBarWidget(isReadOnly: true, hasBackButton: false),
@@ -63,7 +66,7 @@ class _Home_ScreenState extends State<Home_Screen> {
               UserDetailsBar(
                   offset: offset,
                   userDetails:
-                      User_Details(name: "Naveed", address: "KK house")),
+                    User_Details(name: userdetails!.name, phone:userdetails.phone)),
             ],
           ),
         ),

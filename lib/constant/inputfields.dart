@@ -6,13 +6,18 @@ class inputfields extends StatelessWidget {
   String? hint_text;
   IconData? field_icon;
   TextEditingController? controller;
-  inputfields({required this.hint_text, required this.field_icon,required this.controller});
+  inputfields(
+      {required this.hint_text,
+      required this.field_icon,
+      required this.controller});
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      padding: EdgeInsets.symmetric(
+        horizontal: 10.w,
+      ),
       width: width * 0.8,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30.w),

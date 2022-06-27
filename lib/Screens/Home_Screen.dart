@@ -11,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../constant/Constants.dart';
+import '../resources/Firestore_methods.dart';
 
 class Home_Screen extends StatefulWidget {
   const Home_Screen({Key? key}) : super(key: key);
@@ -29,6 +30,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   //@override
   @override
   void initState() {
+    // Firestore_method().getNameAndAddress();
     super.initState();
     _scrollController.addListener(() {
       setState(() {
@@ -39,6 +41,7 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   @override
   Widget build(BuildContext context) {
+    //Provider.of<UserDetailsProvider>(context).getData();
     User_Details? userdetails=Provider.of<UserDetailsProvider>(context).userDetails;
     return SafeArea(
       child: Scaffold(
@@ -52,8 +55,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                     SizedBox(
                       height: 5.h,
                     ),
-                    Category_list(),
-                    BannerWidget(),
+                  const  Category_list(),
+                  const  BannerWidget(),
                     // SizedBox(
                     //   height: 3.h,
                     // ),
@@ -63,10 +66,10 @@ class _Home_ScreenState extends State<Home_Screen> {
                   ],
                 ),
               ),
-              UserDetailsBar(
-                  offset: offset,
-                  userDetails:
-                    User_Details(name: userdetails!.name, phone:userdetails.phone)),
+              // UserDetailsBar(
+              //     offset: offset,
+              //     userDetails:
+              //      User_Details(name: userdetails!.name, phone:userdetails.phone)),
             ],
           ),
         ),

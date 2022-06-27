@@ -2,11 +2,10 @@ import 'package:ecommerce_app/Screens/Cart_Screen.dart';
 import 'package:ecommerce_app/Screens/Home_Screen.dart';
 import 'package:ecommerce_app/Screens/Search_Screen.dart';
 import 'package:ecommerce_app/screens/auth_screen.dart';
-import 'package:ecommerce_app/widget/ResultScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'Screens/Acount_Screen.dart';
-import 'Screens/ProductScreen.dart';
+import 'Screens/SellScreen.dart';
 
 
 
@@ -20,7 +19,9 @@ class AppRoutes {
    //static const String Search= '/Search_Screen';
    static const String SearchResultScreen= '/ResultScreen';
    static const String Produc_Screen= '/ProductScreen';
-  
+  static const String Sell_Screen= '/SellScreen';
+
+
 
 
 
@@ -38,8 +39,8 @@ class AppRoutes {
         return _buildRoute(const Account_Screen(), settings);
         case CartScreen:
         return _buildRoute(const Cart_Screen(), settings);
-      //   case Product_Screen:
-      //  return _buildRoute(const ProductScreen(), settings);
+        case Sell_Screen:
+       return _buildRoute(const SellScreen(), settings);
       default:
         return _buildRoute(const Scaffold(), settings);
     }

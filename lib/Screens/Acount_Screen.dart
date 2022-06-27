@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/AppRoutes.dart';
 import 'package:ecommerce_app/widget/Acount_screenBar.dart';
 import 'package:ecommerce_app/widget/Product_list.dart';
 import "package:flutter/material.dart";
@@ -52,7 +53,7 @@ class _Account_ScreenState extends State<Account_Screen> {
             child: GestureDetector(
               child: Center(child: Text("sell")),
               onTap: () {
-                // Navigator.pushNamed(context, "/account_details");
+                  Navigator.pushNamed(context,AppRoutes.Sell_Screen);
               },
             ),
                   ),

@@ -1,10 +1,13 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
 import 'package:ecommerce_app/Screens/Acount_Screen.dart';
 import 'package:ecommerce_app/Screens/Cart_Screen.dart';
 import 'package:ecommerce_app/Screens/Home_Screen.dart';
 import 'package:ecommerce_app/Screens/More.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
+import 'package:ecommerce_app/resources/Firestore_methods.dart';
 import "package:flutter/material.dart";
+import 'package:provider/provider.dart';
 
 class screen_layout extends StatefulWidget {
   const screen_layout({Key? key}) : super(key: key);
@@ -41,7 +44,13 @@ class _screen_layoutState extends State<screen_layout> {
     ),
   ];
   @override
+  void initState() {
+    super.initState();
+   
+  }
+  @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
         height: 60,

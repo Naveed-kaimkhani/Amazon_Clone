@@ -6,13 +6,13 @@ class Product{
   final String ProductName;
   final String description;
   final String url;
-  final int price;
+  final double price;
   final double discount;
   final int rating;
   final String SellerName;
   final String uid;
   final String Sellerid;
-  final String NoOfRatings;
+  final int NoOfRatings;
   final Color color;
   
   

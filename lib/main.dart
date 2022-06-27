@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/Models/Product.dart';
 import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
+import 'package:ecommerce_app/Screens/Acount_Screen.dart';
 import 'package:ecommerce_app/Screens/ProductScreen.dart';
+import 'package:ecommerce_app/Screens/SellScreen.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
 import 'package:ecommerce_app/layouts/screen_layout.dart';
 import 'package:ecommerce_app/screens/auth_screen.dart';
@@ -77,7 +79,7 @@ class MyApp extends StatelessWidget {
                 //     color: Colors.blue,
                 //   ),
                 // ),
-                home: screen_layout(),
+                home: Account_Screen(),
                 onGenerateRoute: AppRoutes.onGenerateRoute),
           );
         });

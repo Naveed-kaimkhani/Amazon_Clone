@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/widget/ResultWidget.dart';
 import 'package:ecommerce_app/widget/SearchBarWidget.dart';
 import "package:flutter/material.dart";
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../Models/Product.dart';
 
@@ -67,7 +66,7 @@ class ResultScreen extends StatelessWidget {
                         SellerName: "meee",
                         uid: "Me hunn",
                         Sellerid: "20sw",
-                        NoOfRatings: "kuch nhh",
+                        NoOfRatings: 0,
                         color: Color.fromARGB(255, 1, 45, 81)),
                   );
                 },

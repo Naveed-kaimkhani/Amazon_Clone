@@ -60,9 +60,13 @@ class _Home_ScreenState extends State<Home_Screen> {
                     // SizedBox(
                     //   height: 3.h,
                     // ),
-                    Product_list(title: "Upto 70% Off", children: Test),
-                    Product_list(title: "Upto 50% Off", children: Test),
-                    Product_list(title: "Upto free Off", children: Test),
+                    Product_list(title: "Health and Beauty", children: Test),
+                    Product_list(title: "Women's Fashion", children: Test),
+                    Product_list(title: "Man's Fashion", children: Test),
+                     Product_list(title: "Babies and Toys", children: Test),
+                     Product_list(title: "Electronics", children: Test),
+                     Product_list(title: "Sports", children: Test),
+                  
                   ],
                 ),
               ),

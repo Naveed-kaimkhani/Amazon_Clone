@@ -1,12 +1,16 @@
 import 'dart:typed_data';
 
+import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
 import 'package:ecommerce_app/constant/Utils.dart';
 import 'package:ecommerce_app/constant/inputfields.dart';
+import 'package:ecommerce_app/resources/Firestore_methods.dart';
 import 'package:ecommerce_app/widget/LoadingWidget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
+import 'package:provider/provider.dart';
 
 class SellScreen extends StatefulWidget {
   const SellScreen({Key? key}) : super(key: key);
@@ -22,10 +26,20 @@ class _SellScreenState extends State<SellScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _DescriptionController = TextEditingController();
   final TextEditingController _PriceController = TextEditingController();
-  final TextEditingController _CostController = TextEditingController();
-
+  final TextEditingController _DiscountController = TextEditingController();
+  final categ = [
+    'Health and Beauty',
+    'Womens Fashion',
+    'Mens Fashion',
+    'Babies and Toys',
+    'Electronics',
+    'Sports'
+  ];
+  String SelectedCateg = 'Health and Beauty';
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     SizedBox size = SizedBox(
       height: 20,
     );
@@ -108,17 +122,45 @@ class _SellScreenState extends State<SellScreen> {
                           inputfields(
                               hint_text: "Description",
                               field_icon: Icons.production_quantity_limits,
-                              controller: _nameController),
+                              controller: _DescriptionController),
                           size,
                           inputfields(
                               hint_text: "Price",
                               field_icon: Icons.production_quantity_limits,
-                              controller: _nameController),
+                              controller: _PriceController),
                           size,
                           inputfields(
                               hint_text: "Discount",
                               field_icon: Icons.production_quantity_limits,
-                              controller: _nameController),
+                              controller: _DiscountController),
+                          size,
+                          Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10.w,
+                              ),
+                              width: width * 0.8,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30.w),
+                                color: globalVariables.secondaryColor
+                                    .withAlpha(60),
+                              ),
+
+                              // ignore: prefer_const_constructors
+                              child: SizedBox(
+                                //width: 80,
+                                child: DropdownButton<String>(
+                                  value: SelectedCateg,
+                                  items: categ
+                                      .map((item) => DropdownMenuItem(
+                                            value: item,
+                                            child: Text(item),
+                                          ))
+                                      .toList(),
+                                  onChanged: (item) => setState(() {
+                                    SelectedCateg = item!;
+                                  }),
+                                ),
+                              )),
                           size,
                           Container(
                               padding: EdgeInsets.symmetric(
@@ -135,7 +177,41 @@ class _SellScreenState extends State<SellScreen> {
                                   "Upload Product",
                                   style: TextStyle(color: Colors.white),
                                 )),
-                                onTap: () async {},
+                                onTap: () async {
+                                  print("in upload function");
+                                  Future<String> url =
+                                      Firestore_method.uploadImageToDatabase(
+                                          image: image, uid: Utils().getUid());
+                                  String output = await Firestore_method
+                                      .uploadProductToDatabase(
+                                    image: image,
+                                    productName: _nameController.text,
+                                    description: _DescriptionController.text,
+                                    rawCost:
+                                        double.parse(_PriceController.text),
+                                    discount: 20,
+                                    sellerName:
+                                        Provider.of<UserDetailsProvider>(
+                                                    context,
+                                                    listen: false)
+                                                .userDetails!
+                                                .name ??
+                                            "No name",
+                                    sellerUid:
+                                        FirebaseAuth.instance.currentUser!.uid,
+                                  );
+                                  print("prodcut uploaded");
+                                  if (output == "success") {
+                                    Utils.showSnackBar(
+                                        context: context,
+                                        content: "Product Uploaded");
+                                    print("Showing snackbar");
+                                  } else {
+                                    Utils.showSnackBar(
+                                        context: context, content: output);
+                                    print("Exception aai");
+                                  }
+                                },
                               )),
                         ]),
                   ),

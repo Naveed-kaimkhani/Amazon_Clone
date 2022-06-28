@@ -1,4 +1,4 @@
-import 'dart:math';
+
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,7 +27,7 @@ static Future  uploadDataToFirestore({required name,required phone}) async{
     User_Details user_details=User_Details.getModelFromJson(snapshot.data() as dynamic);
   }
 
-    Future<String> uploadProductToDatabase({
+    static   Future<String> uploadProductToDatabase({
     required Uint8List? image,
     required String productName,
     required String description,
@@ -61,10 +61,11 @@ static Future  uploadDataToFirestore({required name,required phone}) async{
             
             );
 
-        await firebaseFirestore
+        await FirebaseFirestore.instance
             .collection("products")
             .doc(uid)
             .set(product.getJson());
+            print("Product uploaded to firestore");
         output = "success";
       } catch (e) {
         output = e.toString();
@@ -76,13 +77,15 @@ static Future  uploadDataToFirestore({required name,required phone}) async{
     return output;
   }
 
-    Future<String> uploadImageToDatabase(
-      {required Uint8List image, required String uid}) async {
+  static  Future<String> uploadImageToDatabase(
+      {required Uint8List? image, required String uid}) async {
     Reference storageRef =
         FirebaseStorage.instance.ref().child("products").child(uid);
-    UploadTask uploadToask = storageRef.putData(image);
+    UploadTask uploadToask = storageRef.putData(image!);
     TaskSnapshot task = await uploadToask;
+    print("image uploaded");
     return task.ref.getDownloadURL();
+
   }
 
    

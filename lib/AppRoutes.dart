@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/Screens/Cart_Screen.dart';
 import 'package:ecommerce_app/Screens/Home_Screen.dart';
 import 'package:ecommerce_app/Screens/Search_Screen.dart';
+import 'package:ecommerce_app/layouts/screen_layout.dart';
 import 'package:ecommerce_app/screens/auth_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -41,6 +42,9 @@ class AppRoutes {
         return _buildRoute(const Cart_Screen(), settings);
         case Sell_Screen:
        return _buildRoute(const SellScreen(), settings);
+       
+       case screenlayout:
+       return _buildRoute(const screen_layout(), settings);
       default:
         return _buildRoute(const Scaffold(), settings);
     }

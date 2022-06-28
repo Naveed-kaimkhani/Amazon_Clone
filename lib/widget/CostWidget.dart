@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class CostWidget extends StatelessWidget {
   final Color color;
-  final int cost;
+  final double cost;
   const CostWidget({
     Key? key,
     required this.color,

@@ -1,12 +1,6 @@
-import 'package:ecommerce_app/Models/Product.dart';
 import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
-import 'package:ecommerce_app/Screens/Acount_Screen.dart';
-import 'package:ecommerce_app/Screens/ProductScreen.dart';
-import 'package:ecommerce_app/Screens/SellScreen.dart';
+import 'package:ecommerce_app/Screens/auth_screen.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
-import 'package:ecommerce_app/layouts/screen_layout.dart';
-import 'package:ecommerce_app/screens/auth_screen.dart';
-import 'package:ecommerce_app/widget/ResultScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +73,7 @@ class MyApp extends StatelessWidget {
                 //     color: Colors.blue,
                 //   ),
                 // ),
-                home: Account_Screen(),
+                home: auth_screen(),
                 onGenerateRoute: AppRoutes.onGenerateRoute),
           );
         });

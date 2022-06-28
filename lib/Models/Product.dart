@@ -17,5 +17,17 @@ class Product{
   
   
   Product({required this.ProductName,required this.description,required this.url,required this.price,required this.discount,required this.rating,required this.SellerName,required this.uid,required this.Sellerid,required this.NoOfRatings,required this.color});
-
+    Map<String, dynamic> getJson() {
+    return {
+      'url': url,
+      'ProductName': ProductName,
+      'cost': price,
+      'discount': discount,
+      'uid': uid,
+      'sellerName': SellerName,
+      'sellerUid':uid,
+      'rating': rating,
+      'noOfRating': NoOfRatings,
+    };
+  }
 }

@@ -35,7 +35,7 @@ const List<String> categoriesList = [
 
 List<Widget> Test = [
   SimpleProductWidget(
-    url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+  //  url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
     product: Product(
       ProductName: "shoes",
       description:
@@ -48,11 +48,12 @@ List<Widget> Test = [
       uid: "Me hunn",
       Sellerid: "20sw",
       NoOfRatings: 0,
-      color: Colors.black,
+    //  color: Colors.black,
+     Category: "Sports"
     ),
   ),
   SimpleProductWidget(
-    url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+ //   url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
     product: Product(
       ProductName: "shoes",
       description:
@@ -65,11 +66,12 @@ List<Widget> Test = [
       uid: "Me hunn",
       Sellerid: "20sw",
       NoOfRatings: 0,
-      color: Colors.black,
+      //color: Colors.black,
+     Category: "Sports"
     ),
   ),
   SimpleProductWidget(
-    url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
+ //   url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg",
     product: Product(
       ProductName: "shoes",
       description:
@@ -82,7 +84,8 @@ List<Widget> Test = [
       uid: "Me hunn",
       Sellerid: "20sw",
       NoOfRatings: 0,
-      color: Colors.black,
+    //  color: Colors.black,
+      Category: "Sports"
     ),
   ),
 ];

@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/Models/ReviewModel.dart';
 import 'package:ecommerce_app/constant/Utils.dart';
 import 'package:ecommerce_app/widget/RatingStateWidget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ReviewWidget extends StatelessWidget {

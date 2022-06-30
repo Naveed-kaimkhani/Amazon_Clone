@@ -158,7 +158,7 @@ class ProductScreen extends StatelessWidget {
                                     // color: product.color,
                                     borderRadius: BorderRadius.circular(18),
                                     border: Border.all(
-                                      color: product.color,
+                                      color:Colors.black,
                                     )),
                                 child: IconButton(
                                   onPressed: () {},

@@ -5,9 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../Models/Product.dart';
 
 class SimpleProductWidget extends StatelessWidget {
-  final String url;
   final Product product;
-  SimpleProductWidget({Key? key, required this.url, required this.product})
+  SimpleProductWidget({Key? key, required this.product})
       : super(key: key);
 
   @override
@@ -23,7 +22,7 @@ class SimpleProductWidget extends StatelessWidget {
         child: Container(
           color: Colors.white,
           padding: EdgeInsets.all(8.r),
-          child: Image.network(url),
+          child: Image.network(product.url),
         ),
       ),
     );

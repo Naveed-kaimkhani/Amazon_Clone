@@ -2,6 +2,7 @@
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_app/widget/SimpleProductWidget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ static Future  uploadDataToFirestore({required name,required phone}) async{
     required double discount,
     required String sellerName,
     required String sellerUid,
+    required String Category,
   }) async {
     productName.trim();
     //rawCost.trim();
@@ -57,8 +59,8 @@ static Future  uploadDataToFirestore({required name,required phone}) async{
             Sellerid: sellerUid,
             rating: 5,
             NoOfRatings: 0,
-            color: Colors.blue,
-            
+        //    color: Colors.blue,
+            Category: Category,
             );
 
         await FirebaseFirestore.instance
@@ -86,6 +88,19 @@ static Future  uploadDataToFirestore({required name,required phone}) async{
     print("image uploaded");
     return task.ref.getDownloadURL();
 
+  }
+
+ static Future<List<Widget>> getDataFromCategory({required String Category})async{
+   List<Widget> Children=[];
+   QuerySnapshot<Map<String,dynamic>> snap= await FirebaseFirestore.instance.collection("products").where("Category",isEqualTo: Category).get();
+
+    for (var i = 0; i < snap.docs.length;i++) {
+    DocumentSnapshot docsSnap=  snap.docs[i];
+
+    Product model=Product.fromJson(docsSnap.data() as dynamic);
+  Children.add(SimpleProductWidget(product: model));
+    }
+    return Children;
   }
 
    

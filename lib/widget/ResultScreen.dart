@@ -67,7 +67,10 @@ class ResultScreen extends StatelessWidget {
                         uid: "Me hunn",
                         Sellerid: "20sw",
                         NoOfRatings: 0,
-                        color: Color.fromARGB(255, 1, 45, 81)),
+                  //      color: Color.fromARGB(255, 1, 45, 81),
+                        Category:"Sports",
+                        ),
+                        
                   );
                 },
               ),

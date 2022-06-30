@@ -76,7 +76,8 @@ class _Cart_ScreenState extends State<Cart_Screen> {
                       uid: "Me hunn",
                       Sellerid: "20sw",
                       NoOfRatings:0,
-                      color: Colors.white,
+                  //    color: Colors.white,
+                       Category: "Sports",
                       ),
                 )),
           );

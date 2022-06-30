@@ -149,6 +149,8 @@ class _SellScreenState extends State<SellScreen> {
                               child: SizedBox(
                                 //width: 80,
                                 child: DropdownButton<String>(
+                                  elevation: 0,
+                                  icon: Icon(Icons.keyboard_arrow_down),
                                   value: SelectedCateg,
                                   items: categ
                                       .map((item) => DropdownMenuItem(
@@ -199,6 +201,7 @@ class _SellScreenState extends State<SellScreen> {
                                             "No name",
                                     sellerUid:
                                         FirebaseAuth.instance.currentUser!.uid,
+                                        Category: SelectedCateg,
                                   );
                                   print("prodcut uploaded");
                                   if (output == "success") {

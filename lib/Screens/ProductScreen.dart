@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/Models/ReviewModel.dart';
 import 'package:ecommerce_app/widget/Add_removeItemButton.dart';
 import 'package:ecommerce_app/widget/ReviewWidget.dart';
@@ -8,6 +9,8 @@ import 'package:rating_dialog/rating_dialog.dart';
 
 import '../Models/Product.dart';
 import '../constant/Utils.dart';
+import '../widget/LoadingWidget.dart';
+import '../widget/RatingDialogueWidget.dart';
 
 class ProductScreen extends StatelessWidget {
   final Product product;
@@ -121,15 +124,23 @@ class ProductScreen extends StatelessWidget {
                                             topRight: Radius.circular(30)),
                                       ),
                                       context: context,
-                                      builder: (context) => ListView.builder(
-                                            itemCount: 5,
-                                            itemBuilder: (context, index) =>
-                                                ReviewWidget(
-                                                    review: ReviewModel(
-                                                        "Naveed",
-                                                        "Such an amazing product dfasdf fsdfsfsd fsdfsfs fdffafdsfasfas",
-                                                        3)),
-                                          ));
+                                      builder: (context) => StreamBuilder(
+                                              stream: FirebaseFirestore.instance.collection("products").doc(product.uid).collection("reviews").snapshots(),
+                                            builder:(context,AsyncSnapshot<QuerySnapshot<Map<String,dynamic>>> snapshot){
+                                          if(snapshot.connectionState==ConnectionState.waiting)return LoadingWidget();
+                                          else  {
+                                           return   ListView.builder(
+                                            itemCount: snapshot.data!.docs.length,
+                                            itemBuilder: (context, index) {
+                                         ReviewModel review= ReviewModel.fromJson(snapshot.data!.docs[index].data());
+                                          return ReviewWidget(review: review);
+                                          }
+                                          );
+                                                      }
+        }
+        
+         ,)
+                                  );
                                 },
                                 child: const Text("Reviews")),
                             SizedBox(
@@ -140,7 +151,7 @@ class ProductScreen extends StatelessWidget {
                                   showDialog(
                                       context: context,
                                       builder: (context) =>
-                                          RatingDialogueWidget());
+                                          RatingDialogueWidget(productuid: product.uid,));
                                 },
                                 child: Text("Drop your review"))
                           ],
@@ -227,38 +238,6 @@ class ProductScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class RatingDialogueWidget extends StatelessWidget {
-  const RatingDialogueWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return RatingDialog(
-      title: const Text(
-        'Drop a review for this product',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 20,
-          //    fontWeight: FontWeight.bold,
-        ),
-      ),
-      // encourage your user to leave a high rating?
-      message: const Text(
-        'Tap a star to set your rating.',
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 15),
-      ),
-      // your app's logo?
-      //image: const FlutterLogo(size: 100),
-      submitButtonText: 'Submit',
-      commentHint: 'Type here',
-      onCancelled: () => print('cancelled'),
-      onSubmitted: (RatingDialogResponse res) {},
     );
   }
 }

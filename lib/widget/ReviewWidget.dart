@@ -37,7 +37,7 @@ class ReviewWidget extends StatelessWidget {
               fontSize: 16,
             ),
           ),
-          Divider(
+        const  Divider(
             color: Colors.black,
             height: 15,
             endIndent: 12,

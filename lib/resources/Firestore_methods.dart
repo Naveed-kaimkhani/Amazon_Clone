@@ -2,6 +2,7 @@
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_app/Models/ReviewModel.dart';
 import 'package:ecommerce_app/widget/SimpleProductWidget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -103,5 +104,9 @@ static Future  uploadDataToFirestore({required name,required phone}) async{
     return Children;
   }
 
+  Future<void> UploadReview({required ReviewModel review,required String uid}) async{
+
+      await firebaseFirestore.collection("products").doc(uid).collection("review").add(review.getjson());
+  }
    
 }

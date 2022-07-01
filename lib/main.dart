@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
-import 'package:ecommerce_app/Screens/Acount_Screen.dart';
 import 'package:ecommerce_app/Screens/auth_screen.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
 import 'package:firebase_core/firebase_core.dart';

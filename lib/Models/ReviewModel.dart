@@ -8,7 +8,7 @@ class ReviewModel{
   factory ReviewModel.fromJson(Map<String , dynamic> json){
     return ReviewModel(senderName: json['senderName'],
      description: json['description'], 
-     rating: json['rating']);
+     rating: json['ratring']);
   }
 
   Map<String,dynamic> getjson(){

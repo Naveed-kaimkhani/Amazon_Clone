@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/Models/ReviewModel.dart';
+import 'package:ecommerce_app/resources/Firestore_methods.dart';
 import 'package:ecommerce_app/widget/Add_removeItemButton.dart';
 import 'package:ecommerce_app/widget/ReviewWidget.dart';
 import 'package:ecommerce_app/widget/SliderPay_Button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rating_dialog/rating_dialog.dart';
 
 import '../Models/Product.dart';
 import '../constant/Utils.dart';
@@ -125,14 +125,16 @@ class ProductScreen extends StatelessWidget {
                                       ),
                                       context: context,
                                       builder: (context) => StreamBuilder(
-                                              stream: FirebaseFirestore.instance.collection("products").doc(product.uid).collection("reviews").snapshots(),
+                                              stream: FirebaseFirestore.instance.collection("products").doc(product.uid).collection("review").snapshots(),
                                             builder:(context,AsyncSnapshot<QuerySnapshot<Map<String,dynamic>>> snapshot){
                                           if(snapshot.connectionState==ConnectionState.waiting)return LoadingWidget();
                                           else  {
-                                           return   ListView.builder(
+                                            return   ListView.builder(
+                                          
                                             itemCount: snapshot.data!.docs.length,
                                             itemBuilder: (context, index) {
                                          ReviewModel review= ReviewModel.fromJson(snapshot.data!.docs[index].data());
+                                          
                                           return ReviewWidget(review: review);
                                           }
                                           );
@@ -172,7 +174,10 @@ class ProductScreen extends StatelessWidget {
                                       color:Colors.black,
                                     )),
                                 child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                 Firestore_method.AddToCart(product: product);
+                                    Utils.showSnackBar(context: context, content:"Added to cart");
+                                  },
                                   icon: SvgPicture.asset(
                                     "assets/images/add_to_cart.svg",
                                     color: Colors.black,

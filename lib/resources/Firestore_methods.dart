@@ -109,4 +109,10 @@ static Future  uploadDataToFirestore({required name,required phone}) async{
       await firebaseFirestore.collection("products").doc(uid).collection("review").add(review.getjson());
   }
    
+   
+ static Future<void> AddToCart({required Product product}) async{
+
+      await FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser!.uid).collection("cart").add(product.getJson());
+  }
+   
 }

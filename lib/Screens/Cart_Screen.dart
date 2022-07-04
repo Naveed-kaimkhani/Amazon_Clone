@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/Models/Product.dart';
+import 'package:ecommerce_app/resources/Firestore_methods.dart';
 import 'package:ecommerce_app/widget/CheckoutCard.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widget/Cart_Item_Card.dart';
@@ -17,7 +20,7 @@ class _Cart_ScreenState extends State<Cart_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: const CheckoutCard(),
+        bottomNavigationBar: CheckoutCard(),
         appBar: AppBar(
           backgroundColor: Colors.white,
           title: const Center(
@@ -36,51 +39,53 @@ class _Cart_ScreenState extends State<Cart_Screen> {
             },
           ),
         ),
-        body: ListView.builder(itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: Dismissible(
-                direction: DismissDirection.endToStart,
-                onDismissed: (direction) {
-                  setState(() {
-                    // cartList.removeAt(index);
+        body: StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection("Users")
+              .doc(FirebaseAuth.instance.currentUser!.uid)
+              .collection("cart")
+              .snapshots(),
+          builder: (context,
+              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting)
+              return Center(child: Text("Nothing to show"),);
+            else {
+              return ListView.builder(
+                  itemCount: snapshot.data!.docs.length,
+                  itemBuilder: (context, index) {
+                    Product product =
+                        Product.fromJson(snapshot.data!.docs[index].data());
+
+                    return Dismissible(
+                        direction: DismissDirection.endToStart,
+                        onDismissed: (direction) {
+                          Firestore_method.deleteProductFromCart(
+                              uid: product.uid);
+                          print("In delete ");
+                        },
+                        key: Key(product.uid),
+                        background: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.orange,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: const [
+                                Icon(
+                                  Icons.delete_rounded,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                              ],
+                            )),
+                        child: Cart_Item_Card(product: product));
+
+                    ;
                   });
-                },
-                key: Key("1"),
-                background: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.orange,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Icon(
-                          Icons.delete_rounded,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ],
-                    )),
-                child: Cart_Item_Card(
-                  product: Product(
-                      ProductName: "shoes",
-                      description: "Nikee",
-                      url:
-                          "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
-                      price: 10,
-                      discount: 30.0,
-                      rating: 1,
-                      SellerName: "meee",
-                      uid: "Me hunn",
-                      Sellerid: "20sw",
-                      NoOfRatings:0,
-                  //    color: Colors.white,
-                       Category: "Sports",
-                      ),
-                )),
-          );
-        }));
+            }
+          },
+        ));
   }
 }

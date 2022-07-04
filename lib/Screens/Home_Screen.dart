@@ -10,7 +10,6 @@ import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../constant/Constants.dart';
 
 class Home_Screen extends StatefulWidget {
   const Home_Screen({Key? key}) : super(key: key);
@@ -67,7 +66,12 @@ setState(() {
       });
     });
   }
-
+    @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
     //Provider.of<UserDetailsProvider>(context).getData();

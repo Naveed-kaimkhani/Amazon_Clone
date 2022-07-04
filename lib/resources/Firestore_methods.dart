@@ -2,6 +2,7 @@
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_app/Models/OrderRequestModel.dart';
 import 'package:ecommerce_app/Models/ReviewModel.dart';
 import 'package:ecommerce_app/widget/SimpleProductWidget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -112,7 +113,33 @@ static Future  uploadDataToFirestore({required name,required phone}) async{
    
  static Future<void> AddToCart({required Product product}) async{
 
-      await FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser!.uid).collection("cart").add(product.getJson());
+      await FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser!.uid).collection("cart").doc(product.uid).set(product.getJson());
   }
    
+  static Future deleteProductFromCart({required String uid})async{
+    await FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser!.uid).collection("cart").doc(uid).delete(); 
+   }
+
+  static Future BuyProductFromCart({required User_Details? user})async{
+  QuerySnapshot<Map<String,dynamic>>  snapshot = await FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser!.uid).collection("cart").get(); 
+     for (var i = 0; i < snapshot.docs.length;i++) {
+    DocumentSnapshot docsSnap=  snapshot.docs[i];
+
+    Product model=Product.fromJson(docsSnap.data() as dynamic);
+    addProductsToOrders(product: model,user: user);
+    
+   
+   }
+  }
+static Future addProductsToOrders({required Product product,required User_Details? user})async{
+    await FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser!.uid).collection("orders").add(product.getJson()); 
+  await deleteProductFromCart(uid: product.uid);
+    await orderRequest(product: product , user: user!);  
+   }
+
+static Future orderRequest({required Product product,required User_Details user})async{
+OrderRequestModel order=OrderRequestModel(name: product.ProductName, address:"somewhere on earth");
+await FirebaseFirestore.instance.collection("Users").doc(product.Sellerid).collection("OrderRequest").add(product.getJson());
+}
+
 }

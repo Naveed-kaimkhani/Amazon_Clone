@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/Models/ReviewModel.dart';
+import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
 import 'package:ecommerce_app/resources/Firestore_methods.dart';
 import 'package:ecommerce_app/widget/Add_removeItemButton.dart';
 import 'package:ecommerce_app/widget/ReviewWidget.dart';
 import 'package:ecommerce_app/widget/SliderPay_Button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 
 import '../Models/Product.dart';
 import '../constant/Utils.dart';
@@ -174,8 +177,8 @@ class ProductScreen extends StatelessWidget {
                                       color:Colors.black,
                                     )),
                                 child: IconButton(
-                                  onPressed: () {
-                                 Firestore_method.AddToCart(product: product);
+                                  onPressed: () async{
+                                await Firestore_method.AddToCart(product: product);
                                     Utils.showSnackBar(context: context, content:"Added to cart");
                                   },
                                   icon: SvgPicture.asset(
@@ -187,8 +190,28 @@ class ProductScreen extends StatelessWidget {
                               SizedBox(
                                   height: screenSize.height * 0.08,
                                   width: screenSize.width * 0.7,
-                                  child: const SliderPay_Button()),
-                            ],
+                                  child: SlideAction(
+      borderRadius: 12,
+      innerColor: Color.fromARGB(255, 8, 92, 160),
+      outerColor: Colors.blue,
+      sliderButtonIcon: const Icon(
+        Icons.arrow_forward_ios,
+        size: 14,
+        color: Colors.white,
+      ),
+      text: "Slide to pay",
+      textStyle: const TextStyle(
+        color: Colors.white,
+        fontSize: 15,
+        //fontWeight: FontWeight.bold,
+      ),
+      sliderRotate: false,
+      onSubmit:()async{
+        await Firestore_method.addProductsToOrders(product: product,user: Provider.of<UserDetailsProvider>(context,listen: false).userDetails,);     
+      },
+    )
+    ),
+                ],
                           ),
                         )
                       ],

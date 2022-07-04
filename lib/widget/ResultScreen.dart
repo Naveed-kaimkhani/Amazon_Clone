@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/widget/ResultWidget.dart';
 import 'package:ecommerce_app/widget/SearchBarWidget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
 
 import '../Models/Product.dart';
@@ -47,33 +49,31 @@ class ResultScreen extends StatelessWidget {
             //   height: 5.h,
             // ),
             Expanded(
-              child: GridView.builder(
-                itemCount: 5,
+              child: FutureBuilder(
+          future: FirebaseFirestore.instance.collection("products").where("ProductName" , isEqualTo: query).get(),
+          builder: (context,
+              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting)
+              return Center(child: Text("Nothing to show"),);
+            else {
+
+           return GridView.builder(
+                itemCount: snapshot.data!.docs.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
-                  childAspectRatio: 2 / 3,
+                  childAspectRatio: 2 / 3.3,
                 ),
                 itemBuilder: (context, index) {
+                  Product product=Product.fromJson(snapshot.data!.docs[index].data());
                   return ResultsWidget(
-                    product: Product(
-                        ProductName: "Hand Bag",
-                        description: "This is a Shopping Online App that builds only five main things first, it is the home page. and the second one is the store page. and the third one is the account page, and the fourth one is the cart page. and the last one is more pages",
-                        url:
-                            "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
-                        price: 1000,
-                        discount: 30.0,
-                        rating: 1,
-                        SellerName: "meee",
-                        uid: "Me hunn",
-                        Sellerid: "20sw",
-                        NoOfRatings: 0,
-                  //      color: Color.fromARGB(255, 1, 45, 81),
-                        Category:"Sports",
-                        ),
+                    product:product
                         
                   );
                 },
-              ),
+              );
+            }
+              }
+            )     
             )
           ],
         ),

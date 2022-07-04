@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/AppRoutes.dart';
+import 'package:ecommerce_app/Models/OrderRequestModel.dart';
+import 'package:ecommerce_app/resources/Firestore_methods.dart';
 import 'package:ecommerce_app/widget/Acount_screenBar.dart';
 import 'package:ecommerce_app/widget/Product_list.dart';
 import 'package:ecommerce_app/widget/SimpleProductWidget.dart';
@@ -89,16 +91,33 @@ class _Account_ScreenState extends State<Account_Screen> {
             height: 10.h,
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) {
+            child:StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection("Users")
+              .doc(FirebaseAuth.instance.currentUser!.uid)
+              .collection("OrderRequest")
+              .snapshots(),
+          builder: (context,
+              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting)
+              return Center(child: Text("Nothing to show"),);
+            else {
+           return ListView.builder(
+              itemCount:snapshot.data!.docs.length,
+              itemBuilder:(context,index){
+                OrderRequestModel model=OrderRequestModel.fromJson(snapshot.data!.docs[index].data());
                 return ListTile(
-                  title: Text("Order $index"),
-                  subtitle: const Text("Black shoe"),
-                  trailing: const Icon(Icons.check),
+                  title: Text(model.name),
+                  subtitle: Text(model.address),
+                  trailing:  IconButton(onPressed:()async{await FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser!.uid).collection("OrderRequest").doc(snapshot.data!.docs[index].id).delete();},
+                   icon: Icon(Icons.check)),
                 );
-              },
-            ),
+              }
+              
+              );
+            }
+              }
+            )
           )
         ]),
       )),

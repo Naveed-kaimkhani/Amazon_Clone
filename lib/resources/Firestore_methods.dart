@@ -139,7 +139,7 @@ static Future addProductsToOrders({required Product product,required User_Detail
 
 static Future orderRequest({required Product product,required User_Details user})async{
 OrderRequestModel order=OrderRequestModel(name: product.ProductName, address:"somewhere on earth");
-await FirebaseFirestore.instance.collection("Users").doc(product.Sellerid).collection("OrderRequest").add(product.getJson());
+await FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser!.uid).collection("OrderRequest").add(order.getJson(order));
 }
 
 }

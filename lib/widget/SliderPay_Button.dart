@@ -14,7 +14,7 @@ class SliderPay_Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return SlideAction(
       borderRadius: 12,
-      innerColor: Color.fromARGB(255, 8, 92, 160),
+      innerColor: Color.fromARGB(255, 11, 124, 217),
       outerColor: Colors.blue,
       sliderButtonIcon: const Icon(
         Icons.arrow_forward_ios,

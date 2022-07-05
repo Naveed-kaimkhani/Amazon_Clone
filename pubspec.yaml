@@ -45,6 +45,7 @@ dependencies:
   rating_dialog: ^2.0.4
   provider: ^6.0.3
   image_picker: ^0.8.5+3
+  shimmer: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

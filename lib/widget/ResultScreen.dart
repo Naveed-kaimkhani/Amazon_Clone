@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/widget/ResultWidget.dart';
 import 'package:ecommerce_app/widget/SearchBarWidget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
 
 import '../Models/Product.dart';

@@ -2,6 +2,7 @@ import 'package:ecommerce_app/widget/CostWidget.dart';
 import 'package:flutter/material.dart';
 
 import '../Models/Product.dart';
+import '../Screens/ProductScreen.dart';
 import '../constant/Utils.dart';
 import 'RatingStateWidget.dart';
 
@@ -17,10 +18,11 @@ class ResultsWidget extends StatelessWidget {
     Size screenSize = Utils.getScreenSize();
     return GestureDetector(
         onTap: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => ProductScreen(productModel: product),
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProductScreen(product: product),
+            ));
         },
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal:10),
@@ -46,7 +48,7 @@ class ResultsWidget extends StatelessWidget {
                 child: SizedBox(
                   width: screenSize.width/5,
                   child: FittedBox(
-                    child: const RatingStatWidget(rating: 4)),
+                    child:RatingStatWidget(rating: product.rating)),
                 ),
               ),
             SizedBox(

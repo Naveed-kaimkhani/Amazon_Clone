@@ -108,6 +108,7 @@ static Future  uploadDataToFirestore({required name,required phone}) async{
   Future<void> UploadReview({required ReviewModel review,required String uid}) async{
 
       await firebaseFirestore.collection("products").doc(uid).collection("review").add(review.getjson());
+        await changeAverageRating(productUid: uid, review: review);
   }
    
    
@@ -141,5 +142,13 @@ static Future orderRequest({required Product product,required User_Details user}
 OrderRequestModel order=OrderRequestModel(name: product.ProductName, address:"somewhere on earth");
 await FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser!.uid).collection("OrderRequest").add(order.getJson(order));
 }
-
+Future changeAverageRating({required String productUid,required ReviewModel review}) async{
+ DocumentSnapshot snapshot=await FirebaseFirestore.instance.collection("products").doc(productUid).get();
+  Product productModel=Product.fromJson(snapshot.data() as dynamic);
+  int currentRating=productModel.rating;
+  int newRating=(currentRating+review.rating)~/2;
+  FirebaseFirestore.instance.collection("products").doc(productUid).update({
+    "rating":newRating},
+  ) ;
+}
 }

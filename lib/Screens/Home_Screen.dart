@@ -6,6 +6,7 @@ import 'package:ecommerce_app/widget/Category_list.dart';
 import 'package:ecommerce_app/widget/LoadingWidget.dart';
 import 'package:ecommerce_app/widget/Product_list.dart';
 import 'package:ecommerce_app/widget/SearchBarWidget.dart';
+import 'package:ecommerce_app/widget/ShimmerEffect.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -36,7 +37,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   
   void getData() async{
     print("In get data");
-    List<Widget> HeatndBeauty=await Firestore_method.getDataFromCategory(Category: "Heath and Fitness");
+    List<Widget> HeatndBeauty=await Firestore_method.getDataFromCategory(Category: "Health and Beauty");
   List<Widget> WomensFashion=await Firestore_method.getDataFromCategory(Category: "Womens Fashion");
 List<Widget> MensFashion=await Firestore_method.getDataFromCategory(Category: "Mens Fashion");
 List<Widget> Electronicss=await Firestore_method.getDataFromCategory(Category: "Electronics");
@@ -108,7 +109,7 @@ setState(() {
               //     userDetails:
               //      User_Details(name: userdetails!.name, phone:userdetails.phone)),
             ],
-          ):LoadingWidget(),
+          ):ShimmerEffect(),
         ),
     );
   }

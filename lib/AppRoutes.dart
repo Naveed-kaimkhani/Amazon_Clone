@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Onboarding/ScreenThree.dart';
 import 'package:ecommerce_app/Screens/Cart_Screen.dart';
 import 'package:ecommerce_app/Screens/Home_Screen.dart';
 import 'package:ecommerce_app/Screens/Search_Screen.dart';
@@ -5,6 +6,8 @@ import 'package:ecommerce_app/layouts/screen_layout.dart';
 import 'package:ecommerce_app/screens/auth_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'Onboarding/ScreenOne.dart';
+import 'Onboarding/ScreenTwo.dart';
 import 'Screens/Acount_Screen.dart';
 import 'Screens/SellScreen.dart';
 
@@ -21,7 +24,9 @@ class AppRoutes {
    static const String SearchResultScreen= '/ResultScreen';
    static const String Produc_Screen= '/ProductScreen';
   static const String Sell_Screen= '/SellScreen';
-
+static const String first_Screen= '/ScreenOne';
+static const String second_Screen= '/ScreenTwo';
+static const String third_Screen= '/ScreenThree';
 
 
 
@@ -42,9 +47,16 @@ class AppRoutes {
         return _buildRoute(const Cart_Screen(), settings);
         case Sell_Screen:
        return _buildRoute(const SellScreen(), settings);
-       
        case screenlayout:
        return _buildRoute(const screen_layout(), settings);
+        case first_Screen:
+       return _buildRoute(ScreenOne(), settings);
+         case second_Screen:
+       return _buildRoute(ScreenTwo(), settings);
+         case third_Screen:
+       return _buildRoute(const ScreenThree(), settings);
+       
+      
       default:
         return _buildRoute(const Scaffold(), settings);
     }

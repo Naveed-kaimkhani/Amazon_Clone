@@ -47,12 +47,17 @@ dependencies:
   image_picker: ^0.8.5+3
   shimmer: ^2.0.0
   shared_preferences: ^2.0.15
-  animated_splash_screen:
   lottie:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_native_splash: ^2.2.4
 
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/image/splash.json
+  android: true
+  ios: true
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

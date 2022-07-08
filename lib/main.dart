@@ -3,7 +3,7 @@ import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
 import 'package:ecommerce_app/Screens/auth_screen.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
 import 'package:ecommerce_app/widget/SplashScreen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
   final auth_screen authIntance = const auth_screen();
 
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -77,7 +78,7 @@ class MyApp extends StatelessWidget {
                 //     color: Colors.blue,
                 //   ),
                 // ),
-                home:ScreenOne(),
+                home:SplashScreen(),
         //          StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(),
         // builder:(context,AsyncSnapshot<User?> user){
         //   if (user.connectionState==ConnectionState.waiting) {

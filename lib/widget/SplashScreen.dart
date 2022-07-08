@@ -1,4 +1,3 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:ecommerce_app/Onboarding/ScreenOne.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -14,11 +13,20 @@ class _SplashScreenState extends State<SplashScreen> {
   //bool check=true;
 
   @override
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: ((context) => ScreenOne())));
+    });
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         // child:Lottie.network('https://assets1.lottiefiles.com/private_files/lf30_x2lzmtdl.json')
-          //child: Lottie.asset('assets/images/splash.json'),
+        child: Lottie.asset('assets/images/splash.json'),
       ),
     );
   }

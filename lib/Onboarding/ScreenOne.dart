@@ -19,7 +19,7 @@ class ScreenOne extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  height: size.height / 2,
+                  height: size.height *0.6,
                   width: size.width,
                   child: SvgPicture.asset(
                     "assets/images/first.svg", //asset location
@@ -130,6 +130,7 @@ class ScreenOne extends StatelessWidget {
                     ),
                     child: FloatingActionButton(
                       onPressed: () {
+                        print("hnannnnnn");
                         Navigator.pushNamed(context, AppRoutes.second_Screen);
                       },
                       backgroundColor: Colors.white,

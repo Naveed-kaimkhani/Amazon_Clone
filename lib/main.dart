@@ -2,11 +2,14 @@ import 'package:ecommerce_app/Onboarding/ScreenOne.dart';
 import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
 import 'package:ecommerce_app/Screens/auth_screen.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
+import 'package:ecommerce_app/widget/SplashScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'AppRoutes.dart';
 
@@ -74,43 +77,41 @@ class MyApp extends StatelessWidget {
                 //     color: Colors.blue,
                 //   ),
                 // ),
-                home: ScreenOne(),
+                home:ScreenOne(),
+        //          StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(),
+        // builder:(context,AsyncSnapshot<User?> user){
+        //   if (user.connectionState==ConnectionState.waiting) {
+        //     return const Center(
+        //       child: CircularProgressIndicator(
+        //         color: globalVariables.kPrimaryColor,
+        //       ),
+        //     );
+        //   }
+        //   else{ 
+        //   //  authIntance._animationController.reverse();
+        //  // Firebase
+        //      return const auth_screen();
+        //   }
+          
+        // } ) ,
+
                 onGenerateRoute: AppRoutes.onGenerateRoute),
           );
         });
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          iconTheme: const IconThemeData(
-            color: Colors.black,
-          ),
-          title: const Text("EShop"),
-        ),
-        body: Column(
-          children: [
-            const Center(
-              child: Text("heEeeeee"),
-            ),
-            GestureDetector(
-              child: const Icon(Icons.search),
-              onTap: () =>
-                  Navigator.of(context).pushNamed(AppRoutes.HomeScreen),
-            ),
-          ],
-        ));
-    //   initialRoute: AppRoutes.firstpage,
+  getVisitingflag()async{
+    SharedPreferences preferences =await SharedPreferences.getInstance();
+    bool alreadyVisiting=preferences.getBool("alreadyVisited")??false;
+    return alreadyVisiting;
   }
-}
+
+  setVisitingflag()async{
+    SharedPreferences preferences =await SharedPreferences.getInstance();
+    bool alreadyVisiting=await preferences.setBool("alreadyVisited",true);
+    return alreadyVisiting;
+  }
+
+

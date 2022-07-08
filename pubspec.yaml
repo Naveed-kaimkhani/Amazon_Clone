@@ -46,6 +46,9 @@ dependencies:
   provider: ^6.0.3
   image_picker: ^0.8.5+3
   shimmer: ^2.0.0
+  shared_preferences: ^2.0.15
+  animated_splash_screen:
+  lottie:
 dev_dependencies:
   flutter_test:
     sdk: flutter

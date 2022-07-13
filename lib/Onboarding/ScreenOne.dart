@@ -112,7 +112,7 @@ class ScreenOne extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.centerRight,
                       child: FlatButton(
-                        onPressed: () => print('Skip'),
+                        onPressed: () =>Navigator.pushNamed(context, AppRoutes.authScreen),
                         child: Text(
                           'Skip',
                           style: TextStyle(

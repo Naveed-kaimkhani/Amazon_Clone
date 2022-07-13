@@ -55,7 +55,7 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/image/splash.json
+  image: assets/images/cart.png
   android: true
   ios: true
   # The "flutter_lints" package below contains a set of recommended lints to

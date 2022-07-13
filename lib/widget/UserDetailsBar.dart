@@ -12,7 +12,6 @@ class UserDetailsBar extends StatelessWidget {
     required this.offset,
     required this.userDetails,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     Size screenSize = Utils.getScreenSize();

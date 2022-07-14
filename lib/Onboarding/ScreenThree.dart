@@ -113,7 +113,7 @@ class ScreenThree extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerRight,
                   child: FlatButton(
-                    onPressed: () => print('Skip'),
+                    onPressed: () =>Navigator.pushNamed(context, AppRoutes.authScreen),
                     child:const Text(
                       'Skip',
                       style: TextStyle(

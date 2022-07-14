@@ -1,7 +1,9 @@
 import 'package:ecommerce_app/Onboarding/ScreenOne.dart';
 import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
+import 'package:ecommerce_app/Screens/Home_Screen.dart';
 import 'package:ecommerce_app/Screens/auth_screen.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'AppRoutes.dart';
+import 'Screens/SecondHomeScreen/HomeScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,48 +61,35 @@ class MyApp extends StatelessWidget {
                   ),
                   scaffoldBackgroundColor: globalVariables.backgroundColor,
                 ),
-                // primarySwatch: Colors.blue,
-                // home: ProductScreen(
-                //   product: Product(
-                //     ProductName: "shoes",
-                //     description:
-                //         "A product description is the marketing copy that explains what a product is and why it’s worth purchasing. The purpose of a product description is to supply customers with important information about the features and benefits of the product so they’re compelled to buy.",
-                //     url:
-                //         "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
-                //     price: 1200,
-                //     discount: 30.0,
-                //     rating: 1,
-                //     SellerName: "meee",
-                //     uid: "Me hunn",
-                //     Sellerid: "20sw",
-                //     NoOfRatings: "kuch nhh",
-                //     color: Colors.blue,
-                //   ),
-                // ),
-                home:ScreenOne(),
-        //          StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(),
-        // builder:(context,AsyncSnapshot<User?> user){
-        //   if (user.connectionState==ConnectionState.waiting) {
-        //     return const Center(
-        //       child: CircularProgressIndicator(
-        //         color: globalVariables.kPrimaryColor,
-        //       ),
-        //     );
-        //   }
-        //   else{ 
-        //   //  authIntance._animationController.reverse();
-        //  // Firebase
-        //      return const auth_screen();
-        //   }
-          
-        // } ) ,
-
+               
+                home:Navigate(),
                 onGenerateRoute: AppRoutes.onGenerateRoute),
           );
         });
   }
 }
-
+Future<Widget>  Navigate() async{
+    bool visitingflag= await getVisitingflag();
+    if (visitingflag==true) {
+      return StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(),
+        builder:(context,AsyncSnapshot<User?> user){
+          if (user.connectionState==ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: globalVariables.kPrimaryColor,
+              ),
+            );
+          }
+          else{ 
+             return HomeScreen();
+          }
+          
+        } );
+    }
+  else{
+    return HomeScreen();
+  }
+  }
 
   getVisitingflag()async{
     SharedPreferences preferences =await SharedPreferences.getInstance();

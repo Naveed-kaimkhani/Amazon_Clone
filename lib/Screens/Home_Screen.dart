@@ -3,7 +3,6 @@ import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
 import 'package:ecommerce_app/resources/Firestore_methods.dart';
 import 'package:ecommerce_app/widget/BannerWidget.dart';
 import 'package:ecommerce_app/widget/Category_list.dart';
-import 'package:ecommerce_app/widget/LoadingWidget.dart';
 import 'package:ecommerce_app/widget/Product_list.dart';
 import 'package:ecommerce_app/widget/SearchBarWidget.dart';
 import 'package:ecommerce_app/widget/ShimmerEffect.dart';
@@ -36,14 +35,13 @@ class _Home_ScreenState extends State<Home_Screen> {
   Firestore_method  firebaseFirestore = Firestore_method();
   
   void getData() async{
-    print("In get data");
     List<Widget> HeatndBeauty=await Firestore_method.getDataFromCategory(Category: "Health and Beauty");
   List<Widget> WomensFashion=await Firestore_method.getDataFromCategory(Category: "Womens Fashion");
 List<Widget> MensFashion=await Firestore_method.getDataFromCategory(Category: "Mens Fashion");
 List<Widget> Electronicss=await Firestore_method.getDataFromCategory(Category: "Electronics");
 List<Widget> BabiesNdToys=await Firestore_method.getDataFromCategory(Category: "Babies and Toys");
 List<Widget> Sportss=await Firestore_method.getDataFromCategory(Category: "Sports");
-print("List initialized");
+
 setState(() {
   Heath=HeatndBeauty;
   Womens=WomensFashion;

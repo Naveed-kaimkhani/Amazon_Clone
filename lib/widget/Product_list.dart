@@ -11,9 +11,9 @@ class Product_list extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = Utils.getScreenSize();
     return Container(
-      margin:const EdgeInsets.all(8),
-      color: Colors.white,
-      height: screenSize.height / 4,
+      margin: const EdgeInsets.all(8),
+      color: Color.fromARGB(255, 236, 230, 230),
+      height: screenSize.height / 2,
       width: screenSize.width,
       // color: Colors.white,
       child: Column(
@@ -42,15 +42,13 @@ class Product_list extends StatelessWidget {
               )
             ],
           ),
-          Container(
-            color: Colors.amber,
-            child: SizedBox(
-                height: (screenSize.height / 4) - 30,
-                width: double.infinity,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: children!,
-                )),
+          SizedBox(
+            height: 300,
+            
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: children!,
+            ),
           ),
         ],
       ),

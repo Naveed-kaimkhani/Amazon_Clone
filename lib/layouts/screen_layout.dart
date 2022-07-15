@@ -19,7 +19,7 @@ class screen_layout extends StatefulWidget {
 class _screen_layoutState extends State<screen_layout> {
  int ind=0;
   final screens= const [
-    Home_Screen(),
+    //Home_Screen(),
     Cart_Screen(),
     Account_Screen(),
     More(),

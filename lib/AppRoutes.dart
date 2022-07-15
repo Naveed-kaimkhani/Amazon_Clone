@@ -37,8 +37,8 @@ static const String third_Screen= '/ScreenThree';
         return _buildRoute(const auth_screen(), settings);      
       // case screenlayout:
       //   return _buildRoute(const screen_layout(), settings);
-         case HomeScreen:
-        return _buildRoute(const Home_Screen(), settings);
+         //case HomeScreen:
+        //return _buildRoute(const Home_Screen(), settings);
           case SearchScreen:
         return _buildRoute(const Search_Screen(), settings);
           case AccountScreen:

@@ -9,9 +9,13 @@ class Category_list extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(8),
       height: 100.h,
       width: double.infinity,
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(25),
+      ),
       child: Padding(
           padding: EdgeInsets.symmetric(vertical: 17.h, horizontal: 5.w),
           child: ListView.builder(
@@ -20,7 +24,11 @@ class Category_list extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>ResultScreen(query: categoriesList[index])));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ResultScreen(query: categoriesList[index])));
                   },
                   child: Padding(
                     padding: EdgeInsets.only(left: 10.w),

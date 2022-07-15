@@ -1,6 +1,6 @@
+
 import 'package:ecommerce_app/Onboarding/ScreenOne.dart';
 import 'package:ecommerce_app/Provider/UserDetailsProvider.dart';
-import 'package:ecommerce_app/Screens/Home_Screen.dart';
 import 'package:ecommerce_app/Screens/auth_screen.dart';
 import 'package:ecommerce_app/constant/globalVariables.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,8 +13,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'AppRoutes.dart';
 import 'Screens/SecondHomeScreen/HomeScreen.dart';
 
-void main() async {
+int? initScreen;
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences preferences =await SharedPreferences.getInstance();
+  initScreen=preferences.getInt('initScreen');
+  await preferences.setInt('initScreen', 1);
+
   //firebase configuration for web
   if (kIsWeb) {
     //kIswWeb is a boolen variable that is true if the app is running on a web browser
@@ -62,17 +67,10 @@ class MyApp extends StatelessWidget {
                   scaffoldBackgroundColor: globalVariables.backgroundColor,
                 ),
                
-                home:Navigate(),
-                onGenerateRoute: AppRoutes.onGenerateRoute),
-          );
-        });
-  }
-}
-Future<Widget>  Navigate() async{
-    bool visitingflag= await getVisitingflag();
-    if (visitingflag==true) {
-      return StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(),
-        builder:(context,AsyncSnapshot<User?> user){
+                home:initScreen==0||initScreen==null? StreamBuilder(
+                  stream: FirebaseAuth.instance.authStateChanges(),
+                  builder:(context,AsyncSnapshot<User?> user){
+                   
           if (user.connectionState==ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(
@@ -84,23 +82,46 @@ Future<Widget>  Navigate() async{
              return HomeScreen();
           }
           
-        } );
-    }
-  else{
-    return HomeScreen();
+        } ):HomeScreen(),
+                onGenerateRoute: AppRoutes.onGenerateRoute),
+          );
+        });
   }
-  }
+}
 
-  getVisitingflag()async{
-    SharedPreferences preferences =await SharedPreferences.getInstance();
-    bool alreadyVisiting=preferences.getBool("alreadyVisited")??false;
-    return alreadyVisiting;
-  }
+// Future<Widget>  Navigate() async{
+//     bool visitingflag= await getVisitingflag();
+//     if (visitingflag==true) {
+//       return StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(),
+//         builder:(context,AsyncSnapshot<User?> user){
+//           if (user.connectionState==ConnectionState.waiting) {
+//             return const Center(
+//               child: CircularProgressIndicator(
+//                 color: globalVariables.kPrimaryColor,
+//               ),
+//             );
+//           }
+//           else{ 
+//              return HomeScreen();
+//           }
+          
+//         } );
+//     }
+//   else{
+//     return ScreenOne();
+//   }
+//   }
 
-  setVisitingflag()async{
-    SharedPreferences preferences =await SharedPreferences.getInstance();
-    bool alreadyVisiting=await preferences.setBool("alreadyVisited",true);
-    return alreadyVisiting;
-  }
+//  getVisitingflag()async{
+//     SharedPreferences preferences =await SharedPreferences.getInstance();
+//     bool alreadyVisiting=preferences.getBool("alreadyVisited")??false;
+//     return alreadyVisiting;
+//   }
+
+//   setVisitingflag()async{
+//     SharedPreferences preferences =await SharedPreferences.getInstance();
+//     bool alreadyVisiting=await preferences.setBool("alreadyVisited",true);
+//     return alreadyVisiting;
+//   }
 
 
